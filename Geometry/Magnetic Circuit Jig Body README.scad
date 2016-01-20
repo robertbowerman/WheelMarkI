@@ -22,7 +22,7 @@ Metal Stock with actuals
 6mm diameter. From B&Q over the counter. 
     6.08, 6.28, 6.29, 6.30, 6.36  -> Make hole 6.60mm diameter
 
-Does B&Q sell all of these online?
+Does B&Q sell all of these online? No only the ones I got from B&Q, I checked their website in detail. 
 
 Cuts needed
     Of the 12x12 stock, cut at 12mm
