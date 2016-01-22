@@ -1,6 +1,7 @@
 /* This file is WheelMarkI/Geometry/MagneticCircuitJigBackStop.scad>;   */
 
-include </Users/Robert/GitHub/WheelMarkI/Geometry/relativity2.scad>;
+include </Users/relativity2.scad>;
+
 
 box(size=[30,12,12], anchor=[1,-1,-1])  // creates end stop for 120mm piece
 align([-1,-1,-1])

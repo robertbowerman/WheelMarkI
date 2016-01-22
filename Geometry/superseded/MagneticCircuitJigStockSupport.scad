@@ -13,7 +13,7 @@ include </Users/Robert/GitHub/WheelMarkI/Geometry/relativity2.scad>;
 // hole 12.47mm square is 12mm 
 // hole 12.47mm square is 12mm 
 rodDiameter = 6.60;
-tenByThreeHeight = 2.93;
+tenByThreeHeight = 3.23;
 tenByThreeWidth = 10.41;
 twelveByTwelveSide = 12.47;
 
