@@ -2,21 +2,21 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex -114 12 0
-      vertex -114 121 12
-      vertex -114 121 0
+      vertex -114 120 12
+      vertex -114 120 0
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex -114 121 12
+      vertex -114 120 12
       vertex -114 12 0
       vertex -114 12 12
     endloop
   endfacet
   facet normal 0 0 1
     outer loop
-      vertex -102 121 12
-      vertex -114 121 12
+      vertex -102 120 12
+      vertex -114 120 12
       vertex -102 12 12
     endloop
   endfacet
@@ -143,7 +143,7 @@ solid OpenSCAD_Model
     outer loop
       vertex -114 12 12
       vertex -102 12 12
-      vertex -114 121 12
+      vertex -114 120 12
     endloop
   endfacet
   facet normal 0 0 1
@@ -170,29 +170,29 @@ solid OpenSCAD_Model
   facet normal 1 -0 0
     outer loop
       vertex -102 12 12
-      vertex -102 121 0
-      vertex -102 121 12
+      vertex -102 120 0
+      vertex -102 120 12
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex -102 121 0
+      vertex -102 120 0
       vertex -102 12 12
       vertex -102 12 0
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
-      vertex -102 121 0
-      vertex -114 121 12
-      vertex -102 121 12
+      vertex -102 120 0
+      vertex -114 120 12
+      vertex -102 120 12
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -114 121 12
-      vertex -102 121 0
-      vertex -114 121 0
+      vertex -114 120 12
+      vertex -102 120 0
+      vertex -114 120 0
     endloop
   endfacet
   facet normal 0 0 -1
@@ -290,7 +290,7 @@ solid OpenSCAD_Model
     outer loop
       vertex -102 12 0
       vertex -114 12 0
-      vertex -102 121 0
+      vertex -102 120 0
     endloop
   endfacet
   facet normal -0 0 -1
@@ -344,9 +344,9 @@ solid OpenSCAD_Model
   endfacet
   facet normal -0 0 -1
     outer loop
-      vertex -102 121 0
+      vertex -102 120 0
       vertex -114 12 0
-      vertex -114 121 0
+      vertex -114 120 0
     endloop
   endfacet
   facet normal 0 -1 0
