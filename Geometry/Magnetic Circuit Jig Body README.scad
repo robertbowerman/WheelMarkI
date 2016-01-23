@@ -1,7 +1,7 @@
 /* Jig for Cutting Iron parts for Magnetic Circuit for Wheel Mark I
 
 To Cut 
-    3mm x 10mm x 120mm  Qty 1    Rotor circuit maker
+    3mm x 10mm x 120mm  Qty 1    Rotor circuit maker, 120 figute may be off. 
     12mm x 12mm x 12mm  Qty 2    Stator EM main pads
     3mm x 10mm x 14mm   Qty 2    Stator EM side pads    
     6mm diameter x 102mm Qty 1   Stator EM windings core   That 102 figure is off. 
