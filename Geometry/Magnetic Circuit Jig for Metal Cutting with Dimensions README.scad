@@ -23,7 +23,7 @@ Metal Stock with actuals
 6mm diameter. From B&Q over the counter. 
     6.08, 6.28, 6.29, 6.30, 6.36  -> Make hole 6.60mm diameter, on metal that is 6.30 x 6.30 x 100mm
 
-Does B&Q sell all of these online? No - only the same as in the shop, so the 3 x 10 needs to be bouth off metalbits
+Does B&Q sell all of these online? No - only the same as in the shop, so the 3 x 10 needs to be both off metalbits.  I have purchased all of them off metalbits.
 
 Cuts needed
     Of the 12x12 stock, cut at 12mm
@@ -40,5 +40,11 @@ Table top details (its the Idea table in the hall)
     20.45mm of thickness to clamp onto
 
 (Stator EM side pads could have been made of 3 x 12 but thats more types of iron bar to buy and anyway the magnet is only 10 wide)
+*/
 
+/* Uses The Openscad General Library of Relativity, found on Thingiverse.  See http://www.thingiverse.com/thing:349943
+Downlaod from Thingiverse.  Their filename has a lot of dots in it so I've renamed it relativity2.scad. 
+
+The code is held at https:github.com/davidson16807/relativity.scad/wiki
+The wiki has helpful instructions 
 */

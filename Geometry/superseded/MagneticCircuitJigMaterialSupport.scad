@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-//include </Users/Robert/GitHub/WheelMarkI/Geometry/relativity2.scad>;
-//include </Users/RobertBowerman/GitHub/WheelMarkI/Geometry/relativity2.scad>;
->>>>>>> origin/master
 include </Users/relativity2.scad>;
 
 holeForRodDiameter = 6.30; 
