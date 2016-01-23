@@ -1,4 +1,4 @@
-include </Users/Robert/GitHub/WheelMarkI/Geometry/relativity2.scad>;
+include </Users/relativity2.scad>;
 
 holeForRodDiameter = 6.30; 
 holeForSmallBarHeight = 3.23; 
