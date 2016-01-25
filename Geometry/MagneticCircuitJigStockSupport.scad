@@ -2,7 +2,7 @@ include </Users/relativity2.scad>;
 
 stockSupport();
 
-module stockSupport (){
+module stockSupport(){
 
 rodDiameter = 6.30;
 tenByThreeHeight = 2.93;
