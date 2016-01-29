@@ -8,11 +8,17 @@ include </Users/relativity2.scad>;
 use <MagneticCircuitMetalComponents.scad>;  //this brings in dimensions
 echo(statorMainRodDiameter()); // tests include and use
 
-rotorLongBarInNylon();
-translate([0, 20, 0])statorMainPad();
-translate([0, 40, 0])statorSidePad();
-translate([0, 60, 0])statorMainRod();
-translate([0, 80, 0])rotorMagnetInNylon();
+circuitMetalInRow();
+translate([0, 100, 0])rotorMagnetInNylon();
+
+module circuitMetalInRow() {
+rotorLongBarInNylon(); // 121mm
+translate([0, rotorLongBarWidth() + 5, 0]) statorMainRodInNylon(); // 100mm
+translate([0, rotorLongBarWidth() + statorMainRodDiameter() + 10, 0]) statorSidePad(InNylon);  //14mm long
+translate([0, rotorLongBarWidth() + statorMainRodDiameter() + statorSidePadWidth() + 15, 0]) statorSidePad(InNylon);  //14mm long 
+translate([0, rotorLongBarWidth() + statorMainRodDiameter() + 2*statorSidePadWidth() + 20, 0]) statorMainPadInNylon();
+translate([0, rotorLongBarWidth() + statorMainRodDiameter() + 2*statorSidePadWidth() + statorMainPadWidth() + 25, 0]) statorMainPadInNylon();
+}
 
 module rotorLongBarInNylon(){
     rotorLongBar();
@@ -35,7 +41,7 @@ module statorSidePadInNylon(){
 module statorMainRodInNylon(){
     statorMainRod();
     translate([-justFitSize()/2, -justFitSize()/2, -justFitSize()/2]) color("yellow",0.5)
-    rod([statorMainRodDiameter() + justFitSize(), statorMainRodDiameter() + justFitSize(), statorMainRodSawnLength() + justFitSize()],anchor = [1,-1,-1], $fn=50);
+    rotate(90,[0,1,0])rod([statorMainRodDiameter() + justFitSize(), statorMainRodDiameter() + justFitSize(), statorMainRodSawnLength() + justFitSize()],anchor = [1,-1,-1], $fn=50);
 
     
     //color("SandyBrown")
