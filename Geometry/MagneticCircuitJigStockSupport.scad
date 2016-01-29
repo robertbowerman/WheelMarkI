@@ -16,7 +16,7 @@ adjustmentForPrintSlop = 0.3;
 holeForRodDiameter = 6.60 + adjustmentForPrintSlop; 
 holeForSmallBarHeight = 3.23 + adjustmentForPrintSlop; 
 holeForSmallBarWidth = 10.41 + adjustmentForPrintSlop;
-holeForBigBar = 12.47 + adjustmentForPrintSlop;
+holeForBigBar = 12.47 + adjustmentForPrintSlop;  // so unit height of main part is 12.47 + 0.3 + 2 = 14.77, for wedge + 6 = 20
 interCentresGap = 16.0;
 
 basePlatformHeight = 6.0;
@@ -27,7 +27,7 @@ basePlatformWidth = 30.0;
 
 difference()
     { // start difference
-box([114,basePlatformWidth,basePlatformHeight], anchor=[0,0,-1], $class="body")
+box([154,basePlatformWidth,basePlatformHeight], anchor=[0,0,-1], $class="body")  //very base main part
     { //start children of central part of base 
     align([1,0,-1])      
     rod(d=basePlatformWidth, h=basePlatformHeight, anchor=[0,0,-1], $class="body");
@@ -37,17 +37,17 @@ box([114,basePlatformWidth,basePlatformHeight], anchor=[0,0,-1], $class="body")
     
     align([0,-1,1])     
     box([90,basePlatformWidth-5,holeForBigBar+2], anchor=[0,-1,-1], $class="body"); //main part
-     /*  { //start children of central body of this part 
-        align([-1,0,0])    
-        translate([interCentresGap-holeForBigBar,0,0]) translated(interCentresGap*x, [0,1])
-        box([holeForBigBar, 35, holeForBigBar], anchor=[-1,0,0], $class="hole") // that is the 12 x 12 holes times two   
-           {
-        align([1,0,1]) //WIP!!! compute 5 not guess it. Bring up  THINK - DO it analytically!!!!!!!!! 
-        translate([6*(interCentresGap-holeForBigBar),0, -1.5])
-        //translated(interCentresGap*x, [0,1])
-        box([holeForSmallBarWidth, 35, holeForSmallBarHeight], anchor=[-1,0,0], $class="hole"); // that is the two 10 x 3 holes   
-           }
-       } //end children of central body of this part  */   
+        
+    align([-1,-1,-1])   // table edge holder, slide in two pegs, each 25mm wide x 4.5mm deep
+    translated(124*x,[0,1])    
+    box([5,4.8,basePlatformHeight], anchor=[0,1,-1], $class="body")  //stick out from base
+    align([-1,-1,-1])  
+    box([25.4+4.8+4.8,3,basePlatformHeight], anchor=[-1,1,-1], $class="body")
+    align([1,1,-1])    
+    box([5,4.8,basePlatformHeight], anchor=[1,-1,-1], $class="body");    //side support run x wise cross bar
+       
+        
+      
     } //end children of central part of base 
     union(){
     translate([45-2,30-15,basePlatformHeight+holeForBigBar])rotate(90,[0,0,1])rotate(180,[0,1,0])circuitMetalInRow();

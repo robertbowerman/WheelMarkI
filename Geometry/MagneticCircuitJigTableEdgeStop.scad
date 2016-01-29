@@ -10,7 +10,7 @@ Assembly: These pegs slide in vertically with the head towards the sky (to stop 
 */
 include </Users/relativity2.scad>;
 
-pegBodyHeight = 42.0; //mm plenty of vertical guidance
+pegBodyHeight = 20.0; //mm plenty of vertical guidance (actual comes out at 24.70, 24.74, 24.83,  (can always sand it)
 pegBodyWidth = 25.0; //mm to make it good and strong mounting
 pegBodyDepth = 4.5; //mm 
 pegHead = 4.5;
@@ -21,5 +21,5 @@ module tableEdgeStop(){
 translated(pegBodyHeight*y, [0,1])
 box([pegBodyWidth+2*pegHead,pegBodyDepth+pegHead,pegHead], anchor = [0,1,-1])
 align([0,1,1])
-box([pegBodyWidth,pegBodyDepth,pegBodyHeight], anchor = [0,1,-1]);
+box([pegBodyWidth,pegBodyDepth,pegBodyHeight], anchor = [0,1,-1]); //main body
 }
