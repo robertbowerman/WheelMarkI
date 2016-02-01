@@ -49,7 +49,7 @@ function statorMainPadSawnLength() = 12.0; //use machine cut face for facing tow
 
 function rotorMagnetHeight() = 9.95; //this is the permanent Neodymium magnet with an advertised strength of 4.7kg and N42 material. from first4magnets.com. 
 
-function justFitSize()=0.3; //This is the extra size on an axis you have to include to just fit a part into a nylon hole.  We allow the same for clearance for the nozzle in closing the hole up after insertion. 
+function justFitSize() = 0.3; //This is the extra size on an axis you have to include to just fit a part into a nylon hole.  We allow the same for clearance for the nozzle in closing the hole up after insertion. 
 
 function nozzleDiameter() = 0.4;
 function trueAirGap() = 0.7; 

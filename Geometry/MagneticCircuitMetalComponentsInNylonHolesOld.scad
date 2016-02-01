@@ -9,7 +9,7 @@ use <MagneticCircuitMetalComponents.scad>;  //this brings in dimensions
 echo(statorMainRodDiameter()); // tests include and use
 
 circuitMetalInRow();
-translate([0, 100, 0])rotorMagnetInNylon();
+translate([0, 100, 0]) rotorMagnetInNylon();
 
 module circuitMetalInRow() {
 rotorLongBarInNylon(); // 121mm
