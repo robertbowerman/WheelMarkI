@@ -33,6 +33,12 @@ Does B&Q sell all of these online? No - only the same as in the shop, so the 3 x
 */
 
 function statorMainRodDiameter() = 6.30;
+function statorMainRodCoilDiameter() = statorMainRodDiameter() + 6*enamelledCopperWire20SWGDiameter(); 
+echo("Copper Winding outer diameter", statorMainRodCoilDiameter());
+echo("Copper Winding + its air space of 0.3mm has outer diameter", statorMainRodCoilDiameter()+justFitSize());
+
+
+
 function statorMainRodSawnLength() = 100.0;
 
 function rotorLongBarHeight() = 2.93;
@@ -44,16 +50,18 @@ function statorSidePadWidth() = rotorLongBarWidth(); //10.11;
 function statorSidePadSawnLength() = 14.0;       
 
 function statorMainPadHeight() = 12.17;
-function statorMainPadWidth() = statorMainPadHeight(); //12.17
-function statorMainPadSawnLength() = 12.0; //use machine cut face for facing towards permanent magnet. 
+function statorMainPadSawnWidth() = 12.0;//in the assembly the sawn width ends up in the Y axis
+function statorMainPadLength() = statorMainPadHeight(); //12.17//use machine cut (ie very flat and polished) face for facing towards permanent magnet. 
 
 function rotorMagnetHeight() = 9.95; //this is the permanent Neodymium magnet with an advertised strength of 4.7kg and N42 material. from first4magnets.com. 
 
-function justFitSize()=0.3; //This is the extra size on an axis you have to include to just fit a part into a nylon hole.  We allow the same for clearance for the nozzle in closing the hole up after insertion. 
+function justFitSize() = 0.3; //This is the extra size on an axis you have to include to just fit a part into a nylon hole.  We allow the same for clearance for the nozzle in closing the hole up after insertion. 
 
 function nozzleDiameter() = 0.4;
+function holdInNylonLayerThickness() = nozzleDiameter();
 function trueAirGap() = 0.7; 
 
+function enamelledCopperWire20SWGDiameter() = 0.94; 
 
 /*
 Cuts needed
