@@ -27,15 +27,15 @@ translate([0,-17.6,20.47])
         translated((powerSawCuttingPlateWidth-3)*y,[0,-1])
         box([powerSawCuttingPlateLength,3,7], anchor = [0,1,-1], $class="body"); // edge stay above 
                 
-        align([0,0,0])  // fully centered       
+        align([0,0,0])  // fully centered hole for sawblade      
         box([96, 4, 20], anchor = [0,0,0], $class="hole") // hole for sawblade
             
         //translate([43,0,7])align([0,0,-1]) rotate(90,[0,0,1])rotate(180,[0,1,0])circuitMetalInRow(); // For testing -- comment out before printing these 
             
-        align([0,0,-1])  //  centered and below       
-        translate([4,-14,0])box([26, 4, endStopHeight], anchor = [0,1,1], $class="body"); // end stop for 14 on 12x12  
+        align([0,0,-1])  //  centered and below.  End stop of 14mm for 10x3 flat bar.     
+        translate([4,-14,7.49])box([26, 4, endStopHeight], anchor = [0,1,1], $class="body"); // end stop for 14 on 10x3  
             
-        align([0,0,-1])  //  centered and below       
+        align([0,0,-1])  //  centered and below. End stop of 12mm for 12x12 square bar      
         translate([4-30-2,-12,0])box([30, 4, endStopHeight], anchor = [0,1,1], $class="body"); // end stop for 12mm on 12x12  
             
         align([0,0,-1])  //  centered and below, end stop for rod      

@@ -11,7 +11,7 @@ echo(statorMainRodDiameter()); // tests include and use
 function infintessimallyThin() = 0.0001; //To stop shimmering on rendering coincident surfaces
 
 circuitMetalInRow();
-translate([0, 100, 0])rotorMagnetInNylon();
+translate([0, 100, 0]) rotorMagnetInNylon();
 
 module circuitMetalInRow() {
 rotorLongBarInNylon(); // 121mm

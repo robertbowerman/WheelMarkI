@@ -1,4 +1,10 @@
+<<<<<<< HEAD:Geometry/MagneticCircuitMetalInFull.scad
 /* Magnetic Circuit in full.
+=======
+/* Magnetic Circuit in full.  This very geometry is used to diff out the holes in the body of the rotor and stator. 
+The metal components are arranged snug up against each other.  
+*/
+>>>>>>> origin/master:Geometry/MagneticCircuitMetalInFullOld.scad
 
 Remember that the OpenSCAD Relativity Library commands of align and anchor are unavailable as we are using modules, not rod, box and ball.  
 
@@ -10,11 +16,15 @@ use <MagneticCircuitMetalComponents.scad>;
 use <MagneticCircuitMetalComponentsInNylonHoles.scad>;
 include <MagneticCircuitJigforMetalCuttingWithDimensionsREADME.scad>;
 
+<<<<<<< HEAD:Geometry/MagneticCircuitMetalInFull.scad
 // We have to ensure that the permanent magnet is fully snug in its hole in one direction, and the pads are fully snug in their holes in the other direction. Will be done by hold in covers.
 // Note magnets are a tad narrower than the long rotor bar - this will be taken into account in creating their holes in nylon
 
 function magneticCircuitInnerRadius() = 123.5; 
 echo("Width for 3D Print on X Axis", 2*magneticCircuitInnerRadius()-5-3+2);
+=======
+// SWe have to ensure that the permanent magnet is fully snug in its hole in one direction, and the pads are fully snug in their holes in the other direction. Probably needs springs.!!!!!!!! 
+>>>>>>> origin/master:Geometry/MagneticCircuitMetalInFullOld.scad
 
 for (circuit = [0:47]) //:47
     rotate(360/48*circuit, [1,0,0]) 
@@ -65,12 +75,20 @@ statorMagneticCircuit();  // use of module
 module rotorMagneticCircuit(){
 //module rotorMagneticCircuit(rotorLongBarWidth(), rotorLongBarHeight(), rotorLongBarLength()){
 rotorLongBarInNylon(); // Remember Opposites attract
+<<<<<<< HEAD:Geometry/MagneticCircuitMetalInFull.scad
     
 translate([rotorLongBarSawnLength()-rotorMagnetHeight(),(rotorLongBarWidth()-rotorMagnetHeight())/2,rotorLongBarHeight()]) 
     rotorMagnetInNylon(); // this way the nylon box on the xy plane is below the z axis, which is what we want.  This is the magnet further from the origin   
     
 translate([0, (rotorLongBarWidth()+rotorMagnetHeight())/2, rotorLongBarHeight()+rotorMagnetHeight()]) rotate(180,[1,0,0]) rotorMagnetInNylonRight(); // this is the magnet nearer the origin
     //translate([0,rotorLongBarWidth(),rrotorLongBarHeight()]) rotate(180,[1,0,0]) rotorMagnet();
+=======
+translate([0,rotorLongBarWidth(),rotorLongBarWidth() + rotorLongBarHeight() - justFitSize()]) 
+    rotate(180,[1,0,0])
+        rotorMagnetInNylon();
+translate([rotorLongBarSawnLength() - rotorLongBarWidth(), 0, rotorLongBarHeight() - justFitSize()])
+    rotorMagnetInNylon();
+>>>>>>> origin/master:Geometry/MagneticCircuitMetalInFullOld.scad
 }
 
 
