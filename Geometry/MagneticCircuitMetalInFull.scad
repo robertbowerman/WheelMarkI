@@ -14,8 +14,15 @@ use <MagneticCircuitMetalComponents.scad>;
 use <MagneticCircuitMetalComponentsInNylonHoles.scad>;
 include <MagneticCircuitJigforMetalCuttingWithDimensionsREADME.scad>;  //this file doesn't create any visuals, so OK to include. 
 
+// Correction for the two long cuts being integer mm. rotorLongBarSawnLength() 
+
+function rotorLongBarEffectiveLength() = 
+ 2 * statorMainPadLength() +  statorMainRodSawnLength() - 2 * (trueAirGap() + 2 * holdInNylonLayerThickness());
+ echo("Rotor Long Bar Effective Length", rotorLongBarEffectiveLength());
+
+
 function magneticCircuitInnerRadius() = 123.5; 
-echo("Width for 3D Print on X Axis", 2*magneticCircuitInnerRadius()-5-3+2);
+echo("Width for 3D Print on X Axis approx", 2*magneticCircuitInnerRadius()-5-3+2);
 
 for (circuit = [0:0]) //:47
     rotate(360/48*circuit, [1,0,0]) 
@@ -65,14 +72,7 @@ module rotorMagneticCircuit(){   //The rotor has two permies and a long bar, i.e
 // this will need a small offset to even up for exactly 100mm rod.     
 rotorLongBarInNylon(); // Remember Opposites attract, that governs the direction of what is touching what. 
     
-// Sensitive to X length of magnetic circuit, because of the way mirror works. third occurrence in this file.  To get the magnet furthest from the origin in the right X direction position. 
-    
-/* Correction for the two long cuts being integer mm.
-
--(trueAirGap() + 2 * holdInNylonLayerThickness()) + statorMainPadLength() + 
-zzz
-
-*/    
+// Sensitive to X length of magnetic circuit, because of the way mirror works. third occurrence in this file.  To get the magnet furthest from the origin in the right X direction position.  
     
 translate([rotorLongBarSawnLength()-rotorMagnetHeight(),( rotorLongBarWidth()-rotorMagnetHeight())/2,rotorLongBarHeight()]) 
     rotorMagnetInNylon(); // this way the nylon box on the xy plane is below the z axis, which is what we want.  This is the magnet further from the origin   
