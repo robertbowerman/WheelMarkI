@@ -17,9 +17,9 @@ include <MagneticCircuitJigforMetalCuttingWithDimensionsREADME.scad>;  //this fi
 // Correction for the two long cuts being integer mm. rotorLongBarSawnLength() 
 
 function rotorLongBarEffectiveLength() = 
- 2 * statorMainPadLength() +  statorMainRodSawnLength() - 2 * (trueAirGap() + 2 * holdInNylonLayerThickness());
+ 2 * statorMainPadLength() +  statorMainRodSawnLength() - 2 * (trueAirGap() + 2 * holdInNylonLayerThickness()); //what about 0.3mm nylon. think 
  echo("Rotor Long Bar Effective Length", rotorLongBarEffectiveLength());
-
+ echo("Shift to +X", (rotorLongBarEffectiveLength() - rotorLongBarSawnLength())/2);
 
 function magneticCircuitInnerRadius() = 123.5; 
 echo("Width for 3D Print on X Axis approx", 2*magneticCircuitInnerRadius()-5-3+2);
@@ -29,16 +29,18 @@ for (circuit = [0:0]) //:47
     translate([0,0,-magneticCircuitInnerRadius()]) //this dimension found by trial and error, but it works exactly */
     magneticCircuit();
 
+
+/* ***********************  Magnetic Circuit Module *********************** */
 module magneticCircuit(){
     translate([0,-rotorLongBarWidth()/2,0]){
     
 rotorMagneticCircuit();
         
 // Sensitive to X length of magnetic circuit, because of the way mirror works. first and second occurrence in this file.  For positioning the liliac air gap parts that aren't part of rotor or stator. 
-translate([rotorLongBarSawnLength()/2,0,0])
+translate([rotorLongBarEffectiveLength()/2,0,0])
 mirrored([1,0,0])
 {
-    translate([-rotorLongBarSawnLength()/2,0,0])
+    translate([-rotorLongBarEffectiveLength()/2,0,0])
 color("thistle",0.5){ // hold in nylon to top. These are for visual effect, not part of prints, so not precise Y axis.
     translate([-trueAirGap()-holdInNylonLayerThickness(),(rotorLongBarWidth()-rotorMagnetHeight())/2,rotorMagnetHeight()+rotorLongBarHeight()+trueAirGap()+holdInNylonLayerThickness()])
         box([rotorMagnetHeight()+trueAirGap()+holdInNylonLayerThickness(),rotorMagnetHeight(),holdInNylonLayerThickness()], anchor = [-1,-1,-1]); //higher 
@@ -66,31 +68,32 @@ statorMagneticCircuit();  // use of module
 
 /* Note the wriggle room between the exact fit of the 100mm rod versus the 121mm long bar is taken up by very careful fine adjustment (in the 3d printed plastic and in the 3D openscad model) to how the long bar fits relative to the permanent magnets.  One important design principle is that the cuts are exact integer mm.
 */
-
+/* ***********************  Rotor Magnetic Circuit Module *********************** */
 module rotorMagneticCircuit(){   //The rotor has two permies and a long bar, i.e. 3 parts in it (plus wire).  
     
 // this will need a small offset to even up for exactly 100mm rod.     
+    translate([(rotorLongBarEffectiveLength() - rotorLongBarSawnLength())/2,0,0])
 rotorLongBarInNylon(); // Remember Opposites attract, that governs the direction of what is touching what. 
     
 // Sensitive to X length of magnetic circuit, because of the way mirror works. third occurrence in this file.  To get the magnet furthest from the origin in the right X direction position.  
     
-translate([rotorLongBarSawnLength()-rotorMagnetHeight(),( rotorLongBarWidth()-rotorMagnetHeight())/2,rotorLongBarHeight()]) 
+translate([rotorLongBarEffectiveLength()-rotorMagnetHeight(),( rotorLongBarWidth()-rotorMagnetHeight())/2,rotorLongBarHeight()]) 
     rotorMagnetInNylon(); // this way the nylon box on the xy plane is below the z axis, which is what we want.  This is the magnet further from the origin   
     
 translate([0, (rotorLongBarWidth()+rotorMagnetHeight())/2, rotorLongBarHeight()+rotorMagnetHeight()]) rotate(180,[1,0,0]) rotorMagnetInNylonRight(); // this is the magnet nearer the origin
     //translate([0,rotorLongBarWidth(),rrotorLongBarHeight()]) rotate(180,[1,0,0]) rotorMagnet();
 }
 
-
+/* *********************** Stator Magnetic Circuit Module *********************** */
 module statorMagneticCircuit(){ 
 // Sensitive to X length of magnetic circuit, because of the way mirror works. fourth occurrence in this file.     
-translate([rotorLongBarSawnLength()/2,0,0])  
+translate([rotorLongBarEffectiveLength()/2,0,0])  
 mirrored([1,0,0])
 {
     
 //where a part is going to be held, rammed down, firmly in place by the Stator Cover or the Rotor Cover, it does not need 0.3mm to just fit in, that dimension of air hole made by nylon should be zero.     
 // Sensitive to X length of magnetic circuit, because of the way mirror works. fifth occurrence in this file..     
-translate([-rotorLongBarSawnLength()/2,0,0]) union(){
+translate([-rotorLongBarEffectiveLength()/2,0,0]) union(){
 translate([-(2*holdInNylonLayerThickness()+trueAirGap()), 
     -(statorMainPadSawnWidth()-rotorLongBarWidth())/2,
     rotorLongBarHeight()+rotorMagnetHeight()+2*holdInNylonLayerThickness()+trueAirGap()]) 
