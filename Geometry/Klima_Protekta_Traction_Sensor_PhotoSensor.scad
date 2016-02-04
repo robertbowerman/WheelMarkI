@@ -47,9 +47,9 @@ photosensor();
 
 module photosensor(){
 
-color("yellow")cylinder(photosensor_body_height(),photosensor_body_diameter()/2,photosensor_body_diameter()/2, $fn=500);
+color("yellow")cylinder(photosensor_body_height(),photosensor_body_diameter()/2,photosensor_body_diameter()/2, $fn=100);
 translate([0,0,-photosensor_hat_rim_height()])
-color("orange")cylinder(photosensor_hat_rim_height(),photosensor_hat_rim_diameter()/2,photosensor_hat_rim_diameter()/2, $fn=500);
+color("orange")cylinder(photosensor_hat_rim_height(),photosensor_hat_rim_diameter()/2,photosensor_hat_rim_diameter()/2, $fn=100);
 
 translate([-photosensor_wire_offset()/2,0,-photosensor_wire_long_length()])
 cylinder(photosensor_wire_long_length(),photosensor_wire_diameter()/2,photosensor_wire_diameter()/2, $fn=4);
