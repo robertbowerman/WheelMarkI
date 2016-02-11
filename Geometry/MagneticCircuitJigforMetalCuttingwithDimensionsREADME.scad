@@ -71,6 +71,8 @@ function nozzleDiameter() = 0.4;
 function holdInNylonLayerThickness() = nozzleDiameter();
 function trueAirGap() = 0.7; 
 
+function goodMinimumThicknessForRigidStrength() = 2.0;
+
 function enamelledCopperWire20SWGDiameter() = 0.94; 
 
 /*

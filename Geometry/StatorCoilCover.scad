@@ -15,6 +15,8 @@ Two nickel plated brass inserts of M3 size from RS Components (part number 278-5
 */
 
 include </Users/relativity2.scad>;
+use </Users/write.scad>;
+use </Users/Letters.dxf>;
 
 bottomPegIn = 1.0; //Securing of bottom of this strip into the bottom of stator tin
 topPenIn = 3.0; // thickness of top layer of biscuit tin
@@ -30,6 +32,24 @@ holeFromEnd = 15.57;
 interHoleXGap = coverLength - (holeFromEnd * 2);
 holeDiameter = insertHoleDiameter;
 
+ for(numberToPrint = [0 : 47]){
+     color("blue") {
+     translate([10*numberToPrint,0,0])
+     rotate(-90,[0,0,1])
+     write(str(numberToPrint),h=8,t=1); // h is how big the letter is as a font point size, t is how tall the letter is as in an embossed font. 
+      
+      
+     coilSet = "ABCDEFGHIJKL";  //12 letters 
+     //list2 = [ for (i = [0 : 1 : len(str) - 1]) str[i] ];
+     translate([10*numberToPrint,-15,0])
+     rotate(-90,[0,0,1]) 
+     write(str(coilSet[numberToPrint/4]),h=8,t=1);
+     echo(list2); // ECHO: ["S", "m", "T", "x"]    
+     } // end color
+ } //end for
+
+
+
 //Label bottom and top, number them 
 difference(){
 translated((coverLength+3)*x,[0,1,2])     // lots of covers 3 in a column 
@@ -38,17 +58,22 @@ difference(){
 translated(15*y, [0,1,2,3]) // lots of covers 9 in a , so 3 spare
     difference(){
         color("green") box([coverLength, coverWidth, coverThickness], anchor=[-1,-1,-1]); // the cover itself
-        
+        union(){
         translate([holeFromEnd+bottomPegIn,0,0]) // move hole from top
-        translated(interHoleXGap*x, [0,1]) 
+        translated(interHoleXGap*x, [0,1])  // creates pair of holes for electromagnet wire
         translate([0,coverWidth/2,0])         
         //translate([0,coverWidth/2-holeDiameter,0]) //first one created is further from X=0
         rod(d=holeDiameter, h=20, $fn=20, anchor=[0,0,0]);
-      }
+        
+        translate([holeFromEnd+30,coverWidth/2,coverThickness-1])
+        rotate(-90,[0,0,1])
+        write("7",h=6,t=3);
+        } // end union
+      } // end difference
     translate([holeFromEnd+bottomPegIn+10,coverWidth/2,0]) 
   rod(d=holeDiameter, h=20, $fn=20, anchor=[0,0,0]);
-  }
+  } // end difference
   translate([holeFromEnd+bottomPegIn+20,coverWidth/2,0]) 
   rod(d=holeDiameter, h=20, $fn=20, anchor=[0,0,0]);
-  }
+  } // end difference
   
