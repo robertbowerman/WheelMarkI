@@ -21,23 +21,25 @@ function rotorLongBarEffectiveLength() =
  echo("Rotor Long Bar Effective Length", rotorLongBarEffectiveLength());
  echo("Shift to +X", (rotorLongBarEffectiveLength() - rotorLongBarSawnLength())/2);
 
-function magneticCircuitInnerRadius() = 123.5; 
+function magneticCircuitInnerRadius() = 123.5; //123.5; 
 echo("Width for 3D Print on X Axis approx", 2*magneticCircuitInnerRadius()-5-3+2);
 
 for (circuit = [0:0]) //:47
     rotate(360/48*circuit, [1,0,0]) 
-    translate([0,0,-magneticCircuitInnerRadius()]) //this dimension found by trial and error, but it works exactly */
+    //translate([0,0,-magneticCircuitInnerRadius()]) //this dimension found by trial and error, but it works exactly */
     magneticCircuit();
 
 
 /* ***********************  Magnetic Circuit Module *********************** */
 module magneticCircuit(){
-    translate([0,-rotorLongBarWidth()/2,0]){
+    
+translate([0,-rotorLongBarWidth()/2,0]){
     
 rotorMagneticCircuit();
         
-// Sensitive to X length of magnetic circuit, because of the way mirror works. first and second occurrence in this file.  For positioning the liliac air gap parts that aren't part of rotor or stator. 
-translate([rotorLongBarEffectiveLength()/2,0,0])
+// Sensitive to X-axis-direction length of magnetic circuit, because of the way mirror works. first and second occurrence in this file.  For positioning the liliac air gap parts that aren't part of rotor or stator. 
+// Near to origin the rotor long bar is just the 0.3mm air gap off the end of the permanent magnet. 
+translate([(rotorLongBarEffectiveLength()/2),0,0])
 mirrored([1,0,0])
 {
     translate([-rotorLongBarEffectiveLength()/2,0,0])
@@ -71,8 +73,8 @@ statorMagneticCircuit();  // use of module
 /* ***********************  Rotor Magnetic Circuit Module *********************** */
 module rotorMagneticCircuit(){   //The rotor has two permies and a long bar, i.e. 3 parts in it (plus wire).  
     
-// this will need a small offset to even up for exactly 100mm rod.     
-    translate([(rotorLongBarEffectiveLength() - rotorLongBarSawnLength())/2,0,0])
+// this uses a small offset of 0.02 to even up for exactly 100mm rod.     
+translate([((rotorLongBarEffectiveLength() - rotorLongBarSawnLength())/2) + 0.02,0,0])
 rotorLongBarInNylon(); // Remember Opposites attract, that governs the direction of what is touching what. 
     
 // Sensitive to X length of magnetic circuit, because of the way mirror works. third occurrence in this file.  To get the magnet furthest from the origin in the right X direction position.  
