@@ -30,6 +30,16 @@ Metal Stock with actuals
     6.08, 6.28, 6.29, 6.30, 6.36  -> Say its 6.30 diameter. Make hole 6.60mm diameter, on metal that is 6.30 x 6.30 x 100mm
 
 Does B&Q sell all of these online? No - only the same as in the shop, so the 3 x 10 needs to be both off metalbits.  I have purchased all of them off metalbits.
+
+*** Order off Metalbits 5 Feb 2015
+To Badgers
+6mm rod, 100mm x 48 = 4800 cm = 5m
+3 x 10, 121mm x 48 -  5808 = 6m
+
+To David
+12 x 12, 12mm x 96 =115.2, so 2m
+10 x 3, 14mm x 96 = 134.4, so 2m 
+
 */
 
 function statorMainRodDiameter() = 6.30;
